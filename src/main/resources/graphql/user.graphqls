@@ -1,0 +1,29 @@
+type User {
+  id: ID
+  fullName: String
+  enabled: Boolean
+  email: String
+  # password: String
+  userType: UserType
+  roles: [Role]
+}
+
+enum UserType {
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+input UserStoreDto {
+  fullName: String!
+  enabled: Boolean = true
+  email: String!
+  password: String!
+}
+
+input UserUpdateDto {
+  id: ID!
+  fullName: String!
+  enabled: Boolean = true
+  email: String!
+}

@@ -1,0 +1,25 @@
+type Patient {
+  id: ID!
+  ic: String
+  address: String
+  phone: String
+  birthdate: String
+  user: User
+}
+
+input PatientStoreInput {
+  ic: String
+  address: String
+  phone: String
+  birthdate: String
+  user: UserStoreDto
+}
+
+input PatientUpdateInput {
+  id: ID
+  ic: String!
+  address: String!
+  phone: String!
+  birthdate: String!
+  user: UserUpdateDto
+}

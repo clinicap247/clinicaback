@@ -1,0 +1,16 @@
+type ConsultingRoom {
+    id: ID
+    roomName: String
+    roomLocation: String
+}
+
+input ConsultingRoomInput {
+    roomName: String!
+    roomLocation: String!
+}
+
+input ConsultingRoomUpdateInput {
+    id: ID
+    roomName: String!
+    roomLocation: String!
+}

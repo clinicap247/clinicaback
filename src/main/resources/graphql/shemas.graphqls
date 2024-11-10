@@ -1,0 +1,60 @@
+type Query {
+  # Speciality
+  specialities: [Speciality]
+  speciality(id: ID!): Speciality
+
+  # Consulting Room
+  consultingRooms: [ConsultingRoom]
+  consultingRoom(id: ID!): ConsultingRoom
+
+  # Patient
+  patients: [Patient]
+  patient(id: ID!): Patient
+
+  # Doctor
+  doctors: [Doctor]
+  doctor(id: ID!): Doctor
+
+  # Doctor Shedule
+  doctorShedules(params: DoctorSheduleParams): [DoctorShedule]
+  doctorShedule(id: ID!): DoctorShedule
+
+  # Appointment
+  appointments(params: AppointmentParams): [Appointment]
+  appointment(id: ID!): Appointment
+}
+
+type Mutation {
+  # Speciality
+  createSpeciality(input: SpecialityInput!): Speciality
+  updateSpeciality(id: ID!, input: SpecialityUpdateInput!): Speciality
+  deleteSpeciality(id: ID!): Boolean
+
+  # Consulting Room
+  createConsultingRoom(input: ConsultingRoomInput!): ConsultingRoom
+  updateConsultingRoom(
+    id: ID!
+    input: ConsultingRoomUpdateInput!
+  ): ConsultingRoom
+  deleteConsultingRoom(id: ID!): Boolean
+
+  # Patient
+  createPatient(input: PatientStoreInput!): Patient
+  updatePatient(id: ID!, input: PatientUpdateInput!): Patient
+  # deletePatient(id: ID!): String
+
+  # Doctor
+  createDoctor(input: DoctorInput!): Doctor
+  updateDoctor(id: ID!, input: DoctorUpdateInput!): Doctor
+  deleteDoctor(id: ID!): Boolean
+
+  # Doctor Shedule
+  createDoctorShedule(input: DoctorSheduleInput!): DoctorShedule
+  updateDoctorShedule(id: ID!, input: DoctorSheduleUpdateInput!): DoctorShedule
+  deleteDoctorShedule(id: ID!): Boolean
+
+  # Appointment
+  createAppointment(input: AppointmentStoreInput): Appointment
+  updateAppointment(id: ID!, input: AppointmentUpdateInput): Appointment
+  deleteAppointment(id: ID!): Boolean
+}

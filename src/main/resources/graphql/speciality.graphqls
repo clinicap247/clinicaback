@@ -1,0 +1,14 @@
+type Speciality {
+    id: ID
+    name: String
+}
+
+input SpecialityInput {
+    name: String!
+}
+
+input SpecialityUpdateInput {
+    id: ID
+    name: String!
+}
+

@@ -1,0 +1,42 @@
+type DoctorShedule {
+  id: ID
+  dayOfWeek: Int
+  startTime: String
+  endTime: String
+  slotDuration: String
+  totalSlots: Int
+  status: Boolean
+  doctor: Doctor
+  speciality: Speciality
+  consultingRoom: ConsultingRoom
+}
+
+input DoctorSheduleParams {
+  doctorId: ID
+  specialityId: ID
+  consultingRoomId: ID
+  dayOfWeek: Int
+  status: Boolean
+}
+
+input DoctorSheduleInput {
+  dayOfWeek: Int!
+  startTime: String!
+  endTime: String!
+  slotDuration: Int!
+  status: Boolean = true
+  doctorId: ID!
+  specialityId: ID!
+  consultingRoomId: ID!
+}
+
+input DoctorSheduleUpdateInput {
+  dayOfWeek: Int!
+  startTime: String!
+  endTime: String!
+  slotDuration: Int!
+  status: Boolean
+  doctorId: ID!
+  specialityId: ID!
+  consultingRoomId: ID!
+}

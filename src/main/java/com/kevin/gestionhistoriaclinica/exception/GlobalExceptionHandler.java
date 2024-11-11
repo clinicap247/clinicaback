@@ -81,4 +81,12 @@ public class GlobalExceptionHandler {
                                 webRequest.getDescription(false));
                 return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
         }
+
+        @ExceptionHandler(IllegalArgumentException.class)
+        public ResponseEntity<ApiResponse> handlerIllegalArgumentException(IllegalArgumentException exception,
+                        WebRequest webRequest) {
+                ApiResponse apiResponse = new ApiResponse(exception.getMessage(),
+                                webRequest.getDescription(false));
+                return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+        }
 }

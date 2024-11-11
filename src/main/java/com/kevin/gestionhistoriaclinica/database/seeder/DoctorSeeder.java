@@ -3,7 +3,6 @@ package com.kevin.gestionhistoriaclinica.database.seeder;
 import com.github.javafaker.Faker;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.IntStream;

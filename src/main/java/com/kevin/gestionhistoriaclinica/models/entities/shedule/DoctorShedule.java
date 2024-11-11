@@ -40,7 +40,7 @@ public class DoctorShedule {
     private LocalTime endTime;
 
     @Column(name = "slot_duration")
-    private Integer slotDuration;
+    private Long slotDuration;
 
     @Column(name = "total_slots")
     private Integer totalSlots;

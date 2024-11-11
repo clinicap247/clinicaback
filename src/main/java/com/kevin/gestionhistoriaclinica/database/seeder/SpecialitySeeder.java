@@ -1,11 +1,9 @@
 package com.kevin.gestionhistoriaclinica.database.seeder;
 
-import com.github.javafaker.Faker;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.stream.IntStream;
 
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Speciality;
 import com.kevin.gestionhistoriaclinica.repositories.shedule.ISpecialityRepository;
@@ -18,15 +16,16 @@ public class SpecialitySeeder implements Runnable {
 
     @Override
     public void run() {
-        Faker faker = new Faker();
+        List<String> specialities = List.of(
+                "Cardiologo", "Pediatra", "Dermatologo", "Oftalmologo", "Ginecologo", "Neurologo", "Oncologo",
+                "Psiquiatra", "Traumatologo", "Urologo");
 
-        IntStream.range(0, 10).forEach(i -> {
-            String specialityName = faker.medical().diseaseName();
+        for (String specialityName : specialities) {
             specialityRepository.findByName(specialityName).orElseGet(() -> {
                 Speciality speciality = new Speciality(specialityName);
                 return specialityRepository.save(speciality);
             });
-        });
+        }
 
         System.out.println("Speciality seeder executed");
     }

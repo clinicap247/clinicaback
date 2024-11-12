@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -22,7 +21,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Builder
 @Entity
 @Table(name = "medical_histories")
 public class MedicalHistory {
@@ -36,4 +34,9 @@ public class MedicalHistory {
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    public MedicalHistory(LocalDate creationDate, Patient patient) {
+        this.creationDate = creationDate;
+        this.patient = patient;
+    }
 }

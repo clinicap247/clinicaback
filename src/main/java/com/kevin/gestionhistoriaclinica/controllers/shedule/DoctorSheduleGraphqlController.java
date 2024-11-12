@@ -8,6 +8,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleParams;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleUpdateDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
@@ -21,7 +22,7 @@ public class DoctorSheduleGraphqlController {
     private final IDoctorSheduleService doctorSheduleService;
 
     @QueryMapping
-    public List<DoctorShedule> doctorShedules(@Argument DoctorSheduleParams params) {
+    public List<DoctorSheduleResponse> doctorShedules(@Argument DoctorSheduleParams params) {
         if (params == null) {
             params = new DoctorSheduleParams();
         }

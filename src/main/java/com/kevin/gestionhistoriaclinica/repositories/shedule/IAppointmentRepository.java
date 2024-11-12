@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.AppointmentParams;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Appointment;
 
-//Push
 public interface IAppointmentRepository {
     List<Appointment> findAll(AppointmentParams params);
 
@@ -15,4 +14,5 @@ public interface IAppointmentRepository {
     Appointment save(Appointment doctorShedule);
 
     void delete(Long id);
+
 }

@@ -2,6 +2,7 @@ package com.kevin.gestionhistoriaclinica.util.date;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateParser {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -19,6 +20,15 @@ public class DateParser {
         try {
             String formattedDate = date.format(DATE_FORMATTER);
             return LocalDate.parse(formattedDate, DATE_FORMATTER);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    "La fecha debe estar en formato dd-MM-yyyy. Valor recibido: " + date);
+        }
+    }
+
+    public static LocalDate parseDate(Date date) {
+        try {
+            return LocalDate.parse(date.toString(), DATE_FORMATTER);
         } catch (Exception e) {
             throw new IllegalArgumentException(
                     "La fecha debe estar en formato dd-MM-yyyy. Valor recibido: " + date);

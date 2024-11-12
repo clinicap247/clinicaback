@@ -22,10 +22,10 @@ public class DoctorSheduleSeeder implements Runnable {
         // Supongamos que ya tienes IDs válidos de doctor, especialidad y sala de
         // consulta.
         Long[] doctorIds = { 1L, 2L, 3L };
-        Long[] specialityIds = { 1L, 2L };
+        Long[] specialityIds = { 1L, 2L, 3L, 4L, 5L };
         Long[] consultingRoomIds = { 1L, 2L, 3L };
 
-        IntStream.range(0, 10).forEach(i -> {
+        IntStream.range(0, 100).forEach(i -> {
             DoctorSheduleStoreDto sheduleDto = DoctorSheduleStoreDto.builder()
                     .dayOfWeek(faker.number().numberBetween(1, 7)) // Días de la semana del 1 al 7
                     .startTime("08:00") // Inicio fijo o aleatorio, puedes cambiarlo
@@ -38,7 +38,5 @@ public class DoctorSheduleSeeder implements Runnable {
 
             doctorSheduleService.save(sheduleDto);
         });
-
-        System.out.println("Doctor Shedule seeder executed");
     }
 }

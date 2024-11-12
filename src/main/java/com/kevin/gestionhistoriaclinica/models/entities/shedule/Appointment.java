@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,11 +43,11 @@ public class Appointment {
     private AppointmentStatus status = AppointmentStatus.PENDING;
 
     // Relations
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "doctor_shedule_id")
     private DoctorShedule doctorShedule;
 }

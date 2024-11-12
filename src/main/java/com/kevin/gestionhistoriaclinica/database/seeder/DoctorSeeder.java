@@ -34,7 +34,5 @@ public class DoctorSeeder implements Runnable {
 
             doctorService.save(doctorDto);
         });
-
-        System.out.println("Doctor seeder executed");
     }
 }

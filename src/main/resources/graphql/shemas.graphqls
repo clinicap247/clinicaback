@@ -16,12 +16,16 @@ type Query {
   doctor(id: ID!): Doctor
 
   # Doctor Shedule
-  doctorShedules(params: DoctorSheduleParams): [DoctorShedule]
+  doctorShedules(params: DoctorSheduleParams): [DoctorSheduleResponse]
   doctorShedule(id: ID!): DoctorShedule
 
   # Appointment
   appointments(params: AppointmentParams): [Appointment]
   appointment(id: ID!): Appointment
+
+  # Medical History
+  medicalHistories: [MedicalHistory]
+  medicalHistory(id: ID!): MedicalHistory
 }
 
 type Mutation {
@@ -57,4 +61,11 @@ type Mutation {
   createAppointment(input: AppointmentStoreInput): Appointment
   updateAppointment(id: ID!, input: AppointmentUpdateInput): Appointment
   deleteAppointment(id: ID!): Boolean
+
+  # Medical History
+  createMedicalHistory(input: MedicalHistoryInput!): MedicalHistory
+  # updateMedicalHistory(
+  #   id: ID!
+  #   input: MedicalHistoryUpdateInput!
+  # ): MedicalHistory
 }

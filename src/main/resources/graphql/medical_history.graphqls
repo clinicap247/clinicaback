@@ -1,0 +1,13 @@
+type MedicalHistory {
+  id: ID
+  createdDate: String
+  patient: Patient
+}
+
+input MedicalHistoryInput {
+  patientId: ID!
+}
+
+input MedicalHistoryUpdateInput {
+  patientId: ID!
+}

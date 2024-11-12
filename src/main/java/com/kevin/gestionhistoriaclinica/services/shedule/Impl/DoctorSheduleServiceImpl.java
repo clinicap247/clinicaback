@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kevin.gestionhistoriaclinica.exception.ResourceNotFoundException;
 import com.kevin.gestionhistoriaclinica.mapper.shedule.DocotorSheduleMapper;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleParams;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleUpdateDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.ConsultingRoom;
@@ -37,8 +38,9 @@ public class DoctorSheduleServiceImpl implements IDoctorSheduleService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<DoctorShedule> findAll(DoctorSheduleParams params) {
-        return doctorSheduleRepository.findByParams(params);
+    public List<DoctorSheduleResponse> findAll(DoctorSheduleParams params) {
+        List<DoctorShedule> doctorShedules = doctorSheduleRepository.findByParams(params);
+        return doctorSheduleMapper.toResponseList(doctorShedules);
     }
 
     @Override

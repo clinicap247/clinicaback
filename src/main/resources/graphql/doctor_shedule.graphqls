@@ -1,14 +1,31 @@
-type DoctorShedule {
+type DoctorSheduleResponse {
   id: ID
   dayOfWeek: Int
   startTime: String
   endTime: String
-  slotDuration: String
+  slotDuration: Int
   totalSlots: Int
   status: Boolean
   doctor: Doctor
   speciality: Speciality
   consultingRoom: ConsultingRoom
+  # appointments: [Appointment]
+  reservedSlots: [Int]
+}
+
+type DoctorShedule {
+  id: ID
+  dayOfWeek: Int
+  startTime: String
+  endTime: String
+  slotDuration: Int
+  totalSlots: Int
+  status: Boolean
+  doctor: Doctor
+  speciality: Speciality
+  consultingRoom: ConsultingRoom
+  appointments: [Appointment]
+  # reservedSlots: [Int]
 }
 
 input DoctorSheduleParams {

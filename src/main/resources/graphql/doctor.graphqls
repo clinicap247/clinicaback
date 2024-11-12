@@ -1,16 +1,15 @@
 type Doctor {
-    id: ID
-    code: String
-    user: User
+  id: ID
+  code: String
+  user: User
 }
 
 input DoctorInput {
-    code: String!
-    user: UserStoreDto!
+  code: String!
+  user: UserStoreDto!
 }
 
 input DoctorUpdateInput {
-    code: String!
-    user: UserUpdateDto!
+  code: String!
+  user: UserUpdateDto!
 }
-

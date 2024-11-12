@@ -26,7 +26,5 @@ public class SpecialitySeeder implements Runnable {
                 return specialityRepository.save(speciality);
             });
         }
-
-        System.out.println("Speciality seeder executed");
     }
 }

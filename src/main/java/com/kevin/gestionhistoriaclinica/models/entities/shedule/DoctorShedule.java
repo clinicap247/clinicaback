@@ -1,9 +1,12 @@
 package com.kevin.gestionhistoriaclinica.models.entities.shedule;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.kevin.gestionhistoriaclinica.models.entities.user.Doctor;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -58,4 +62,8 @@ public class DoctorShedule {
     @ManyToOne
     @JoinColumn(name = "consulting_room_id", nullable = false)
     private ConsultingRoom consultingRoom;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "doctorShedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments = new ArrayList<>();
 }

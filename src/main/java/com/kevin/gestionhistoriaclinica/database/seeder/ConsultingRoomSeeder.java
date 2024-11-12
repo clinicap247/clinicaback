@@ -28,7 +28,5 @@ public class ConsultingRoomSeeder implements Runnable {
 
             consultingRoomService.save(roomDto);
         });
-
-        System.out.println("Consulting Room seeder executed");
     }
 }

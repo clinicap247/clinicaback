@@ -4,7 +4,7 @@ type Appointment {
   slotNumber: Int
   status: AppointmentStatus
   patient: Patient
-  doctorShedule: DoctorShedule
+  doctorShedule: DoctorSheduleResponse
 }
 
 input AppointmentStoreInput {

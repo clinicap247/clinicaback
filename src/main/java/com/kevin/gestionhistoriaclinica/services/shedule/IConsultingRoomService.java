@@ -7,15 +7,15 @@ import com.kevin.gestionhistoriaclinica.models.dto.shedule.ConsultingRoomUpdateD
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.ConsultingRoom;
 
 public interface IConsultingRoomService {
-    public List<ConsultingRoom> findAll();
+    List<ConsultingRoom> findAll();
 
-    public ConsultingRoom findById(Long id);
+    ConsultingRoom findById(Long id);
 
-    public ConsultingRoom save(ConsultingRoomStoreDto dto);
+    ConsultingRoom save(ConsultingRoomStoreDto dto);
 
-    public ConsultingRoom update(Long id, ConsultingRoomUpdateDto dto);
+    ConsultingRoom update(Long id, ConsultingRoomUpdateDto dto);
 
-    public Boolean delete(Long id);
+    Boolean delete(Long id);
 
-    public ConsultingRoom findByIdWithException(Long id);
+    ConsultingRoom findByIdWithException(Long id);
 }

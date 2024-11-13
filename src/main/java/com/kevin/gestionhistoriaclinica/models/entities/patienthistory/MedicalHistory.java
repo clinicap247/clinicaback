@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -31,9 +32,13 @@ public class MedicalHistory {
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    @OneToOne
+    @JoinColumn(name = "consultation_id")
+    private Consultation consultation;
 
     public MedicalHistory(LocalDate creationDate, Patient patient) {
         this.creationDate = creationDate;

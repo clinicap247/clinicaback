@@ -17,7 +17,7 @@ public class ApplicationStartupRunner implements CommandLineRunner {
         String runAllSeeders = System.getenv("RUN_ALL_SEEDERS");
 
         if ("true".equalsIgnoreCase(runAllSeeders)) {
-            seederRunner.runAllSeeders();
+            // seederRunner.runAllSeeders();
         } else {
             System.out.println("Seeder execution skipped.");
         }

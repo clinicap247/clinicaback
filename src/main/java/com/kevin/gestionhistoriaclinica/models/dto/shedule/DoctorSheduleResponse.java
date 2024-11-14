@@ -22,6 +22,7 @@ public class DoctorSheduleResponse {
     private String startTime;
     private String endTime;
     private Long slotDuration;
+    private Integer totalSlots;
     @Builder.Default
     private Boolean status = true;
 

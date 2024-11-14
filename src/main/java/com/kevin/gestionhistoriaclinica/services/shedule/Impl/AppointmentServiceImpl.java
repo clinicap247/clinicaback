@@ -1,8 +1,12 @@
 package com.kevin.gestionhistoriaclinica.services.shedule.Impl;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.kevin.gestionhistoriaclinica.exception.ResourceNotFoundException;
 import com.kevin.gestionhistoriaclinica.mapper.shedule.AppointmentMapper;
@@ -15,6 +19,7 @@ import com.kevin.gestionhistoriaclinica.repositories.shedule.IAppointmentReposit
 import com.kevin.gestionhistoriaclinica.services.shedule.IAppointmentService;
 import com.kevin.gestionhistoriaclinica.services.shedule.IDoctorSheduleService;
 import com.kevin.gestionhistoriaclinica.services.user.IPatientService;
+import com.kevin.gestionhistoriaclinica.util.date.DateParser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,19 +35,24 @@ public class AppointmentServiceImpl implements IAppointmentService {
     private final AppointmentMapper appointmentMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Appointment> findAll(AppointmentParams params) {
         return appointmentRepository.findAll(params);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Appointment findById(Long id) {
         return findByIdWithException(id);
     }
 
     @Override
+    @Transactional
     public Appointment save(AppointmentDto dto) {
-        Patient patient = patientService.findById(dto.getPatientId());
         DoctorShedule doctorShedule = doctorSheduleService.findById(dto.getDoctorSheduleId());
+        existsAppointment(dto, doctorShedule);
+
+        Patient patient = patientService.findById(dto.getPatientId());
 
         Appointment appointment = appointmentMapper.toEntity(dto, patient, doctorShedule);
 
@@ -50,6 +60,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
     }
 
     @Override
+    @Transactional
     public Appointment update(Long id, AppointmentDto dto) {
         Appointment appointment = findByIdWithException(id);
         dto.setId(id);
@@ -60,6 +71,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
     }
 
     @Override
+    @Transactional
     public Boolean delete(Long id) {
         appointmentRepository.delete(id);
         return true;
@@ -69,4 +81,18 @@ public class AppointmentServiceImpl implements IAppointmentService {
         return appointmentRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Ficha de atención", "id", id));
     }
+
+    private Boolean existsAppointment(AppointmentDto dto, DoctorShedule doctorShedule) {
+        Optional<Appointment> appointment = appointmentRepository.find(
+                doctorShedule,
+                dto.getSlotNumber(),
+                DateParser.parseDate(LocalDate.now()));
+
+        if (appointment.isPresent()) {
+            throw new IllegalStateException("El cupo ya está reservado para este horario.");
+        }
+
+        return true;
+    }
+
 }

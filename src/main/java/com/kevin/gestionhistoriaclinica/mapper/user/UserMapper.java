@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.kevin.gestionhistoriaclinica.models.dto.user.UserResponseDto;
 import com.kevin.gestionhistoriaclinica.models.dto.user.UserDto;
+import com.kevin.gestionhistoriaclinica.models.dto.user.UserResponseDto;
 import com.kevin.gestionhistoriaclinica.models.entities.user.User;
 
 @Component
@@ -15,7 +15,7 @@ public class UserMapper {
     public User toEntity(UserDto dto) {
         return User.builder()
                 .fullName(dto.getFullName())
-                .email(dto.getEmail())
+                .username(dto.getEmail())
                 .password(dto.getPassword())
                 .enabled(dto.getEnabled())
                 .userType(dto.getUserType())
@@ -26,7 +26,7 @@ public class UserMapper {
         user.setId(dto.getId());
         user.setFullName(dto.getFullName());
         user.setEnabled(dto.getEnabled());
-        user.setEmail(dto.getEmail());
+        user.setUsername(dto.getEmail());
 
         return user;
     }
@@ -35,7 +35,7 @@ public class UserMapper {
         return UserResponseDto.builder()
                 .id(user.getId())
                 .fullName(user.getFullName())
-                .email(user.getEmail())
+                .email(user.getUsername())
                 .enabled(user.getEnabled())
                 .userType(user.getUserType())
                 .build();

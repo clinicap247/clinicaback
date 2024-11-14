@@ -68,6 +68,7 @@ public class DocotorSheduleMapper {
                                 .startTime(doctorShedule.getStartTime().toString())
                                 .endTime(doctorShedule.getEndTime().toString())
                                 .slotDuration(doctorShedule.getSlotDuration())
+                                .totalSlots(doctorShedule.getTotalSlots())
                                 .status(doctorShedule.getStatus())
                                 .doctor(doctorShedule.getDoctor())
                                 .speciality(doctorShedule.getSpeciality())

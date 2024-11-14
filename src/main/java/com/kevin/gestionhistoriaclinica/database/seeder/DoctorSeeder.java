@@ -1,12 +1,11 @@
 package com.kevin.gestionhistoriaclinica.database.seeder;
 
-import com.github.javafaker.Faker;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.IntStream;
-
+import com.github.javafaker.Faker;
 import com.kevin.gestionhistoriaclinica.models.dto.user.DoctorStoreDto;
 import com.kevin.gestionhistoriaclinica.models.dto.user.UserDto;
 import com.kevin.gestionhistoriaclinica.services.user.IDoctorService;
@@ -21,13 +20,13 @@ public class DoctorSeeder implements Runnable {
     public void run() {
         Faker faker = new Faker();
 
-        IntStream.range(0, 10).forEach(i -> {
+        IntStream.range(0, 30).forEach(i -> {
             DoctorStoreDto doctorDto = DoctorStoreDto.builder()
                     .code(faker.idNumber().valid())
                     .user(UserDto.builder()
                             .fullName(faker.name().fullName())
                             .email(faker.internet().emailAddress())
-                            .password(faker.internet().password())
+                            .password("password")
                             .enabled(true)
                             .build())
                     .build();

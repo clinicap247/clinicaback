@@ -1,7 +1,13 @@
 package com.kevin.gestionhistoriaclinica.models.entities.user;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.hibernate.annotations.ManyToAny;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.kevin.gestionhistoriaclinica.models.enums.UserType;
 
@@ -30,7 +36,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,7 +45,7 @@ public class User {
     private String fullName;
 
     @Column(unique = true)
-    private String email; // Para mi es un email
+    private String username; // Para mi es un email
 
     @Column
     private String password;
@@ -56,4 +62,14 @@ public class User {
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
             @UniqueConstraint(columnNames = { "user_id", "role_id" }) })
     private List<Role> roles = new ArrayList<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).toList();
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
 }

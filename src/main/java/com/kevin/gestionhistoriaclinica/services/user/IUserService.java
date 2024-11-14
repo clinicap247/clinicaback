@@ -7,6 +7,8 @@ import com.kevin.gestionhistoriaclinica.models.entities.user.User;
 public interface IUserService {
     User findById(Long id);
 
+    User findByEmail(String email);
+
     User save(UserDto dto);
 
     User save(UserDto dto, Role role);

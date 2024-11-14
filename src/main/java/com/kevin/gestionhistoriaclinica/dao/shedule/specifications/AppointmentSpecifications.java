@@ -14,10 +14,10 @@ public class AppointmentSpecifications {
         return (root, query, criteriaBuilder) -> {
             var predicates = new ArrayList<Predicate>();
 
-            // if (params.getAppointmentDate() != null) {
-            // predicates.add(criteriaBuilder.equal(root.get("appointment_date"),
-            // params.getAppointmentDate().toString()));
-            // }
+            if (params.getAppointmentDate() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("appointment_date"),
+                        params.getAppointmentDate().toString()));
+            }
 
             if (params.getSlotNumber() != null) {
                 predicates.add(criteriaBuilder.equal(root.get("slot_number"),

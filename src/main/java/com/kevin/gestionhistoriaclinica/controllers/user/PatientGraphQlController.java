@@ -15,7 +15,7 @@ import com.kevin.gestionhistoriaclinica.services.user.IPatientService;
 
 @Controller
 @RequiredArgsConstructor
-public class PatientGraphQlController {
+public class PatientGraphqlController {
 
     private final IPatientService patientService;
 

@@ -11,6 +11,8 @@ import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 public interface IDoctorSheduleService {
     public List<DoctorSheduleResponse> findAll(DoctorSheduleParams params);
 
+    public List<DoctorShedule> findAll();
+
     public DoctorShedule findById(Long id);
 
     public DoctorShedule save(DoctorSheduleStoreDto dto);

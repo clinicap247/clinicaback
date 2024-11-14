@@ -44,6 +44,11 @@ public class DoctorSheduleServiceImpl implements IDoctorSheduleService {
     }
 
     @Override
+    public List<DoctorShedule> findAll() {
+        return doctorSheduleRepository.findAll();
+    }
+
+    @Override
     public DoctorShedule findById(Long id) {
         return findByIdWithException(id);
     }

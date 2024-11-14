@@ -14,7 +14,7 @@ import com.kevin.gestionhistoriaclinica.models.entities.user.Doctor;
 import com.kevin.gestionhistoriaclinica.services.user.IDoctorService;
 
 @Controller
-public class DoctorGraphQlController {
+public class DoctorGraphqlController {
     @Autowired
     private IDoctorService doctorService;
 

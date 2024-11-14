@@ -28,7 +28,7 @@ public class UserJpaRepository implements IUserRepository {
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return userDao.findByEmail(email);
+        return userDao.findByUsername(email);
     }
 
     @Override

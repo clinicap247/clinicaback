@@ -1,6 +1,7 @@
 package com.kevin.gestionhistoriaclinica.database.seeder;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -15,6 +16,7 @@ import com.kevin.gestionhistoriaclinica.models.enums.AppointmentStatus;
 import com.kevin.gestionhistoriaclinica.services.shedule.IAppointmentService;
 import com.kevin.gestionhistoriaclinica.services.shedule.IDoctorSheduleService;
 import com.kevin.gestionhistoriaclinica.services.user.IPatientService;
+import com.kevin.gestionhistoriaclinica.util.date.DateParser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,9 +40,10 @@ public class AppointmentSeeder implements Runnable {
             return;
         }
 
-        IntStream.range(0, 500).forEach(i -> {
+        IntStream.range(0, 200).forEach(i -> {
             try {
-                AppointmentDto appointmentDto = generateRandomAppointmentDto(doctorShedules, patients);
+                AppointmentDto appointmentDto = generateRandomAppointmentDto(doctorShedules, patients,
+                        LocalDate.parse("2024-11-01"), LocalDate.parse("2024-11-14"));
                 appointmentService.save(appointmentDto);
             } catch (IllegalStateException e) {
                 System.out.println("Slot ya reservado, omitiendo: " + e.getMessage());
@@ -50,12 +53,18 @@ public class AppointmentSeeder implements Runnable {
         });
     }
 
-    private AppointmentDto generateRandomAppointmentDto(List<DoctorShedule> doctorShedules, List<Patient> patients) {
+    private AppointmentDto generateRandomAppointmentDto(List<DoctorShedule> doctorShedules, List<Patient> patients,
+            LocalDate startDate, LocalDate endDate) {
         DoctorShedule randomDoctorShedule = doctorShedules.get(random.nextInt(doctorShedules.size()));
         Patient randomPatient = patients.get(random.nextInt(patients.size()));
 
+        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+        LocalDate randomDate = startDate.plusDays(faker.number().numberBetween(0,
+                (int) daysBetween + 1));
+        // LocalDate randomDate =
+
         return AppointmentDto.builder()
-                .appointmentDate(LocalDate.now().plusDays(faker.number().numberBetween(1, 30)))
+                .appointmentDate(DateParser.parseDate(randomDate))
                 .slotNumber(faker.number().numberBetween(1, randomDoctorShedule.getTotalSlots()))
                 .status(AppointmentStatus.PENDING)
                 .doctorSheduleId(randomDoctorShedule.getId())

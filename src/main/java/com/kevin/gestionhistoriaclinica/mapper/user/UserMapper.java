@@ -15,7 +15,7 @@ public class UserMapper {
     public User toEntity(UserDto dto) {
         return User.builder()
                 .fullName(dto.getFullName())
-                .username(dto.getEmail())
+                .email(dto.getEmail())
                 .password(dto.getPassword())
                 .enabled(dto.getEnabled())
                 .userType(dto.getUserType())
@@ -26,7 +26,7 @@ public class UserMapper {
         user.setId(dto.getId());
         user.setFullName(dto.getFullName());
         user.setEnabled(dto.getEnabled());
-        user.setUsername(dto.getEmail());
+        user.setEmail(dto.getEmail());
 
         return user;
     }
@@ -35,7 +35,7 @@ public class UserMapper {
         return UserResponseDto.builder()
                 .id(user.getId())
                 .fullName(user.getFullName())
-                .email(user.getUsername())
+                .email(user.getEmail())
                 .enabled(user.getEnabled())
                 .userType(user.getUserType())
                 .build();

@@ -42,7 +42,7 @@ public class DoctorSheduleSeeder implements Runnable {
             return;
         }
 
-        IntStream.range(0, 200).forEach(i -> {
+        IntStream.range(0, 50).forEach(i -> {
             try {
                 DoctorSheduleStoreDto sheduleDto = generateRandomDoctorShedule(doctors, specialities, consultingRooms);
                 doctorSheduleService.save(sheduleDto);

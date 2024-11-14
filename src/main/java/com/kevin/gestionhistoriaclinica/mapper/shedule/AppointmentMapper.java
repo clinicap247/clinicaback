@@ -14,7 +14,7 @@ import com.kevin.gestionhistoriaclinica.util.date.DateParser;
 public class AppointmentMapper {
     public Appointment toEntity(AppointmentDto dto, Patient patient, DoctorShedule doctorShedule) {
         return Appointment.builder()
-                .appointmentDate(DateParser.parseDate(LocalDate.now()))
+                .appointmentDate(dto.getAppointmentDate())
                 .slotNumber(dto.getSlotNumber())
                 .patient(patient)
                 .doctorShedule(doctorShedule)

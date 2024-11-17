@@ -39,6 +39,7 @@ public class MedicalHistoryServiceImpl implements IMedicalHistoryService {
     @Override
     public MedicalHistory save(MedicalHistoryDto medicalHistory) {
         Patient patient = patientService.findById(medicalHistory.getPatientId());
+
         MedicalHistory newMedicalHistory = new MedicalHistory(
                 DateParser.parseDate(LocalDate.now()),
                 patient);
@@ -46,19 +47,16 @@ public class MedicalHistoryServiceImpl implements IMedicalHistoryService {
         return medicalHistoryRepository.save(newMedicalHistory);
     }
 
-    // @Override
-    // public MedicalHistory update(Long id, MedicalHistory medicalHistory) {
-    // MedicalHistory medicalHistoryToUpdate = findByIdWithException(id);
-    // medicalHistoryToUpdate.setPatient(medicalHistory.getPatient());
-    // return medicalHistoryRepository.save(medicalHistoryToUpdate);
-    // }
+    @Override
+    public MedicalHistory save(Long patientId) {
+        Patient patient = patientService.findById(patientId);
 
-    // @Override
-    // public Boolean delete(Long id) {
-    // findByIdWithException(id);
-    // medicalHistoryRepository.delete(id);
-    // return true;
-    // }
+        MedicalHistory newMedicalHistory = new MedicalHistory(
+                DateParser.parseDate(LocalDate.now()),
+                patient);
+
+        return medicalHistoryRepository.save(newMedicalHistory);
+    }
 
     private MedicalHistory findByIdWithException(Long id) {
         return medicalHistoryRepository.findById(id)

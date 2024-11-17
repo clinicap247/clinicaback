@@ -2,6 +2,8 @@ package com.kevin.gestionhistoriaclinica.models.entities.patienthistory;
 
 import java.time.LocalDate;
 
+import com.kevin.gestionhistoriaclinica.models.enums.ConsultationStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +30,11 @@ public class Consultation {
     private Long id;
     @Column(name = "consultation_date")
     private LocalDate consultationDate;
-    private String diagnostic;
-    private Boolean status;
+    @Builder.Default
+    @Column(nullable = true)
+    private String diagnosic = null;
+    @Builder.Default
+    private ConsultationStatus status = ConsultationStatus.PENDING;
 
     @OneToOne
     private MedicalHistory medicalHistory;

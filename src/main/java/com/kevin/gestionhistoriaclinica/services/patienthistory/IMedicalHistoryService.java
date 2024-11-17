@@ -6,13 +6,11 @@ import com.kevin.gestionhistoriaclinica.models.dto.patienthistory.MedicalHistory
 import com.kevin.gestionhistoriaclinica.models.entities.patienthistory.MedicalHistory;
 
 public interface IMedicalHistoryService {
-    public List<MedicalHistory> findAll();
+    List<MedicalHistory> findAll();
 
-    public MedicalHistory findById(Long id);
+    MedicalHistory findById(Long id);
 
-    public MedicalHistory save(MedicalHistoryDto medicalHistory);
+    MedicalHistory save(MedicalHistoryDto medicalHistory);
 
-    // public MedicalHistory update(Long id, MedicalHistory medicalHistory);
-
-    // public Boolean delete(Long id);
+    MedicalHistory save(Long patientId);
 }

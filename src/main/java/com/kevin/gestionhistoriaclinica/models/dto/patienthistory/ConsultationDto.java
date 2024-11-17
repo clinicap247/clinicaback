@@ -13,4 +13,12 @@ import lombok.ToString;
 @Builder
 public class ConsultationDto {
     private Long id;
+    private String date;
+    private String diagnosis;
+
+    // Relations
+    private Long medicalHistoryId;
+
+    // Data of Medical History
+    private Long patientId;
 }

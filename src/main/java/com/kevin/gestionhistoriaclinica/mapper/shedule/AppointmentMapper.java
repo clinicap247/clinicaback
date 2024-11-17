@@ -8,7 +8,6 @@ import com.kevin.gestionhistoriaclinica.models.dto.shedule.AppointmentDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Appointment;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 import com.kevin.gestionhistoriaclinica.models.entities.user.Patient;
-import com.kevin.gestionhistoriaclinica.util.date.DateParser;
 
 @Component
 public class AppointmentMapper {

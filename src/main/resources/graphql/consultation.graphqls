@@ -1,0 +1,16 @@
+type Consultation {
+  id: ID
+  consultationDate: String
+  diagnosis: String
+  status: ConsultationStatus
+  MedicalHistory: MedicalHistory
+}
+
+input ConsultationInput {
+  patientId: ID!
+}
+
+enum ConsultationStatus {
+  PENDING
+  DONE
+}

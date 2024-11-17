@@ -14,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -23,6 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "medical_histories")
 public class MedicalHistory {
     @Id

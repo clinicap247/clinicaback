@@ -26,6 +26,10 @@ type Query {
   # Medical History
   medicalHistories: [MedicalHistory]
   medicalHistory(id: ID!): MedicalHistory
+
+  # Consultation
+  consultations: [Consultation]
+  consultation(id: ID!): Consultation
 }
 
 type Mutation {
@@ -68,4 +72,7 @@ type Mutation {
   #   id: ID!
   #   input: MedicalHistoryUpdateInput!
   # ): MedicalHistory
+
+  # Consultation
+  createConsultation(input: ConsultationInput!): Consultation
 }

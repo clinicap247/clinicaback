@@ -2,7 +2,6 @@ package com.kevin.gestionhistoriaclinica.controllers.user;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -13,10 +12,12 @@ import com.kevin.gestionhistoriaclinica.models.dto.user.DoctorUpdateDto;
 import com.kevin.gestionhistoriaclinica.models.entities.user.Doctor;
 import com.kevin.gestionhistoriaclinica.services.user.IDoctorService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class DoctorGraphqlController {
-    @Autowired
-    private IDoctorService doctorService;
+    private final IDoctorService doctorService;
 
     @QueryMapping
     public List<Doctor> doctors() {

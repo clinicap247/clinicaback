@@ -2,6 +2,8 @@ package com.kevin.gestionhistoriaclinica.services.user.Impl;
 
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,8 @@ public class UserServiceImpl implements IUserService {
 
     private final IUserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private final UserMapper userMapper;
 
@@ -75,6 +78,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", email));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email %s not found", email)));
     }
 }

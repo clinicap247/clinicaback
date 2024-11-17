@@ -19,5 +19,6 @@ public class AppointmentParams {
     // Relaciones
     private Long patientId;
     private Long doctorSheduleId;
-
+    private Long doctorId;
+    private Long specialityId;
 }

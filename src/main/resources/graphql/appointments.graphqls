@@ -26,6 +26,8 @@ input AppointmentParams {
   status: AppointmentStatus
   patientId: ID
   doctorSheduleId: ID
+  doctorId: ID
+  specialityId: ID
 }
 
 enum AppointmentStatus {

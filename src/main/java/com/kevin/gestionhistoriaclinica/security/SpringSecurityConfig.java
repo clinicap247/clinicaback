@@ -40,10 +40,11 @@ public class SpringSecurityConfig {
                 return http
                                 .authorizeHttpRequests(
                                                 authRequest -> authRequest
-                                                                .requestMatchers("/auth/**")
-                                                                .permitAll()
-                                                                .requestMatchers("/graphql")
-                                                                .authenticated())
+                                                                // .requestMatchers("/auth/**")
+                                                                // .permitAll()
+                                                                // .requestMatchers("/graphql")
+                                                                // .authenticated())
+                                                                .requestMatchers("**").permitAll())
                                 .csrf(csrf -> csrf.disable())
                                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                                 .addFilter(new JwtAuthenticationFilter(autentificationManager()))

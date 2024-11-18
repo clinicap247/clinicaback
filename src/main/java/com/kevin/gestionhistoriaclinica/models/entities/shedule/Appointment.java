@@ -2,6 +2,7 @@ package com.kevin.gestionhistoriaclinica.models.entities.shedule;
 
 import java.time.LocalDate;
 
+import com.kevin.gestionhistoriaclinica.models.entities.patienthistory.Consultation;
 import com.kevin.gestionhistoriaclinica.models.entities.user.Patient;
 import com.kevin.gestionhistoriaclinica.models.enums.AppointmentStatus;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,4 +50,7 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "doctor_shedule_id")
     private DoctorShedule doctorShedule;
+
+    @OneToOne(mappedBy = "appointment")
+    private Consultation consultation;
 }

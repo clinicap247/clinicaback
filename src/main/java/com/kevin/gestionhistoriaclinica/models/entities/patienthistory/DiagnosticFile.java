@@ -1,9 +1,5 @@
 package com.kevin.gestionhistoriaclinica.models.entities.patienthistory;
 
-import java.time.LocalDate;
-
-import com.kevin.gestionhistoriaclinica.models.entities.user.Patient;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,27 +18,24 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity
 @Builder
-@Table(name = "medical_histories")
-public class MedicalHistory {
+@Entity
+@Table(name = "diagnostic_files")
+public class DiagnosticFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "creation_date")
-    private LocalDate creationDate;
+    @Column(name = "file_type")
+    private String fileType;
+
+    @Column(name = "file_url")
+    private String fileUrl;
+
+    @Column(nullable = true)
+    private String observation;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @OneToOne
     @JoinColumn(name = "consultation_id")
     private Consultation consultation;
-
-    public MedicalHistory(LocalDate creationDate, Patient patient) {
-        this.creationDate = creationDate;
-        this.patient = patient;
-    }
 }

@@ -1,7 +1,5 @@
 package com.kevin.gestionhistoriaclinica.mapper.shedule;
 
-import java.time.LocalDate;
-
 import org.springframework.stereotype.Component;
 
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.AppointmentDto;

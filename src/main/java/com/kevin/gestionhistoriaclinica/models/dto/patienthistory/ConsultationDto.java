@@ -1,5 +1,10 @@
 package com.kevin.gestionhistoriaclinica.models.dto.patienthistory;
 
+import com.kevin.gestionhistoriaclinica.models.entities.patienthistory.DiagnosticFile;
+import com.kevin.gestionhistoriaclinica.models.entities.patienthistory.LaboratoryTest;
+import com.kevin.gestionhistoriaclinica.models.entities.patienthistory.Medication;
+import com.kevin.gestionhistoriaclinica.models.enums.ConsultationStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +20,15 @@ public class ConsultationDto {
     private Long id;
     private String date;
     private String diagnosis;
-
-    // Relations
-    private Long medicalHistoryId;
+    private ConsultationStatus status;
 
     // Data of Medical History
-    private Long patientId;
+    private Long appointmentId;
+
+    // Data de Laboratory Test
+    private LaboratoryTest laboratoryTest;
+    // Diagnostic
+    private DiagnosticFile diagnosticFile;
+    // Medication
+    private Medication medication;
 }

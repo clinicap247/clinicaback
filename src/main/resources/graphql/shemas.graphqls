@@ -75,4 +75,5 @@ type Mutation {
 
   # Consultation
   createConsultation(input: ConsultationInput!): Consultation
+  updateConsultation(id: ID!, input: ConsultationUpdateInput!): Consultation
 }

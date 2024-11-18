@@ -2,7 +2,6 @@ package com.kevin.gestionhistoriaclinica.controllers.patienthistory;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -32,5 +31,10 @@ public class ConsultationGraphqlController {
     @MutationMapping
     public Consultation createConsultation(@Argument ConsultationDto input) {
         return consultaionService.save(input);
+    }
+
+    @MutationMapping
+    public Consultation updateConsultation(@Argument Long id, @Argument ConsultationDto input) {
+        return consultaionService.update(id, input);
     }
 }

@@ -2,7 +2,6 @@ package com.kevin.gestionhistoriaclinica.controllers.shedule;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -13,11 +12,13 @@ import com.kevin.gestionhistoriaclinica.models.dto.shedule.AppointmentParams;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Appointment;
 import com.kevin.gestionhistoriaclinica.services.shedule.IAppointmentService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class AppointmentGraphqlController {
 
-    @Autowired
-    private IAppointmentService appointmentService;
+    private final IAppointmentService appointmentService;
 
     @QueryMapping
     public List<Appointment> appointments(@Argument AppointmentParams params) {

@@ -11,8 +11,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class DoctorSheduleStoredto {
-    @Builder.Default
-    private Long id = null;
+    private Long id;
     private Integer dayOfWeek;
     private String startTime;
     private String endTime;

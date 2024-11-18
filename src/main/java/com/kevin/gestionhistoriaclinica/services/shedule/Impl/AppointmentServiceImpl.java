@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.kevin.gestionhistoriaclinica.exception.ResourceNotFoundException;
 import com.kevin.gestionhistoriaclinica.mapper.shedule.AppointmentMapper;
@@ -21,19 +21,18 @@ import com.kevin.gestionhistoriaclinica.services.shedule.IDoctorSheduleService;
 import com.kevin.gestionhistoriaclinica.services.user.IPatientService;
 import com.kevin.gestionhistoriaclinica.util.date.DateParser;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AppointmentServiceImpl implements IAppointmentService {
 
-    @Autowired
-    private IAppointmentRepository appointmentRepository;
+    private final IAppointmentRepository appointmentRepository;
     // Service
-    @Autowired
-    private IPatientService patientService;
-    @Autowired
-    private IDoctorSheduleService doctorSheduleService;
+    private final IPatientService patientService;
+    private final IDoctorSheduleService doctorSheduleService;
     // Mapper
-    @Autowired
-    private AppointmentMapper appointmentMapper;
+    private final AppointmentMapper appointmentMapper;
 
     @Override
     @Transactional(readOnly = true)

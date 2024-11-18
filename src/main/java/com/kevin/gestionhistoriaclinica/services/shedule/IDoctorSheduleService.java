@@ -4,8 +4,7 @@ import java.util.List;
 
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleParams;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleUpdateDto;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoredto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 
 public interface IDoctorSheduleService {
@@ -15,9 +14,9 @@ public interface IDoctorSheduleService {
 
     public DoctorShedule findById(Long id);
 
-    public DoctorShedule save(DoctorSheduleStoreDto dto);
+    public DoctorShedule save(DoctorSheduleStoredto dto);
 
-    public DoctorShedule update(Long id, DoctorSheduleUpdateDto dto);
+    public DoctorShedule update(Long id, DoctorSheduleStoredto dto);
 
     public Boolean delete(Long id);
 

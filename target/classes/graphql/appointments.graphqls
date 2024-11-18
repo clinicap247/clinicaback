@@ -1,0 +1,37 @@
+type Appointment {
+  id: ID
+  appointmentDate: String
+  slotNumber: Int
+  status: AppointmentStatus
+  patient: Patient
+  doctorShedule: DoctorSheduleResponse
+}
+
+input AppointmentStoreInput {
+  id: ID
+  appointmentDate: String
+  slotNumber: Int
+  status: AppointmentStatus
+  patientId: ID
+  doctorSheduleId: ID
+}
+
+input AppointmentUpdateInput {
+  id: ID
+  status: AppointmentStatus
+}
+
+input AppointmentParams {
+  appointmentDate: String
+  status: AppointmentStatus
+  patientId: ID
+  doctorSheduleId: ID
+  doctorId: ID
+  specialityId: ID
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELED
+}

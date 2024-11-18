@@ -1,0 +1,69 @@
+type Consultation {
+  id: ID
+  consultationDate: String
+  diagnosis: String
+  status: ConsultationStatus
+  appointment: Appointment
+  laboratoryTests: [LaboratoryTest]
+  diagnosticFiles: [DiagnosticFile]
+  medications: [Medication]
+}
+
+type LaboratoryTest {
+  id: ID
+  type: String
+  result: String
+}
+
+type DiagnosticFile {
+  id: ID
+  fileType: String
+  fileUrl: String
+  observation: String
+}
+
+type Medication {
+  id: ID
+  name: String
+  dose: String
+  frequency: String
+  duration: Int # in days
+}
+
+input ConsultationInput {
+  appointmentId: ID!
+  diagnosis: String
+}
+
+input ConsultationUpdateInput {
+  id: ID
+  status: ConsultationStatus
+  diagnosis: String
+  laboratoryTest: LaboratoryTestInput
+  diagnosticFile: DiagnosticFileInput
+  medication: MedicationInput
+}
+
+input LaboratoryTestInput {
+  type: String
+  result: String
+}
+
+input DiagnosticFileInput {
+  fileType: String
+  fileUrl: String
+  observation: String
+}
+
+input MedicationInput {
+  name: String!
+  dose: String
+  frequency: String
+  duration: Int
+}
+
+enum ConsultationStatus {
+  PENDING
+  DONE
+  CANCELED
+}

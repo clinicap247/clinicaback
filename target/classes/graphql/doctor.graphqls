@@ -1,0 +1,15 @@
+type Doctor {
+  id: ID
+  code: String
+  user: User
+}
+
+input DoctorInput {
+  code: String!
+  user: UserStoreDto!
+}
+
+input DoctorUpdateInput {
+  code: String!
+  user: UserUpdateDto!
+}

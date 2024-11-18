@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class DoctorSheduleStoredto {
+public class DoctorSheduleStoreDto {
     private Long id;
     private Integer dayOfWeek;
     private String startTime;

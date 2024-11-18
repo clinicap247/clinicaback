@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoredto;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.ConsultingRoom;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Speciality;
 import com.kevin.gestionhistoriaclinica.models.entities.user.Doctor;
@@ -44,7 +44,7 @@ public class DoctorSheduleSeeder implements Runnable {
 
         IntStream.range(0, 50).forEach(i -> {
             try {
-                DoctorSheduleStoredto sheduleDto = generateRandomDoctorShedule(doctors, specialities, consultingRooms);
+                DoctorSheduleStoreDto sheduleDto = generateRandomDoctorShedule(doctors, specialities, consultingRooms);
                 doctorSheduleService.save(sheduleDto);
             } catch (Exception e) {
                 System.err.println("Error al crear el horario: " + e.getMessage());
@@ -52,13 +52,13 @@ public class DoctorSheduleSeeder implements Runnable {
         });
     }
 
-    private DoctorSheduleStoredto generateRandomDoctorShedule(List<Doctor> doctors, List<Speciality> specialities,
+    private DoctorSheduleStoreDto generateRandomDoctorShedule(List<Doctor> doctors, List<Speciality> specialities,
             List<ConsultingRoom> consultingRooms) {
         Doctor randomDoctor = doctors.get(random.nextInt(doctors.size()));
         Speciality randomSpeciality = specialities.get(random.nextInt(specialities.size()));
         ConsultingRoom randomConsultingRoom = consultingRooms.get(random.nextInt(consultingRooms.size()));
 
-        return DoctorSheduleStoredto.builder()
+        return DoctorSheduleStoreDto.builder()
                 .dayOfWeek(faker.number().numberBetween(1, 7)) // Días de la semana del 1 al 7
                 .startTime("08:00")
                 .endTime("16:00")

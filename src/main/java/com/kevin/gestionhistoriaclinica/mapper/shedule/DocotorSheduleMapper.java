@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoredto;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.ConsultingRoom;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Speciality;
@@ -17,7 +17,7 @@ import com.kevin.gestionhistoriaclinica.util.time.TimeParser;
 @Component
 public class DocotorSheduleMapper {
 
-        public DoctorShedule toEntity(DoctorSheduleStoredto dto, int totalSlots, Doctor doctor, Speciality speciality,
+        public DoctorShedule toEntity(DoctorSheduleStoreDto dto, int totalSlots, Doctor doctor, Speciality speciality,
                         ConsultingRoom consultingRoom) {
                 return DoctorShedule.builder()
                                 .dayOfWeek(dto.getDayOfWeek())
@@ -32,7 +32,7 @@ public class DocotorSheduleMapper {
                                 .build();
         }
 
-        public DoctorShedule updateEntityFromDto(DoctorSheduleStoredto dto, DoctorShedule doctorShedule,
+        public DoctorShedule updateEntityFromDto(DoctorSheduleStoreDto dto, DoctorShedule doctorShedule,
                         int totalSlots,
                         Doctor doctor, Speciality speciality, ConsultingRoom consultingRoom) {
                 doctorShedule.setId(dto.getId());

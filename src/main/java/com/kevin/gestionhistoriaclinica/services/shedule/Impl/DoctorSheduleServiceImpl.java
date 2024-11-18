@@ -9,7 +9,7 @@ import com.kevin.gestionhistoriaclinica.exception.ResourceNotFoundException;
 import com.kevin.gestionhistoriaclinica.mapper.shedule.DocotorSheduleMapper;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleParams;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoredto;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.ConsultingRoom;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.Speciality;
@@ -54,7 +54,7 @@ public class DoctorSheduleServiceImpl implements IDoctorSheduleService {
 
     @Override
     @Transactional
-    public DoctorShedule save(DoctorSheduleStoredto dto) {
+    public DoctorShedule save(DoctorSheduleStoreDto dto) {
         Doctor doctor = doctorService.findById(dto.getDoctorId());
         Speciality speciality = specialityService.findById(dto.getSpecialityId());
         ConsultingRoom consultingRoom = consultingRoomService.findById(dto.getConsultingRoomId());
@@ -72,7 +72,7 @@ public class DoctorSheduleServiceImpl implements IDoctorSheduleService {
 
     @Override
     @Transactional
-    public DoctorShedule update(Long id, DoctorSheduleStoredto dto) {
+    public DoctorShedule update(Long id, DoctorSheduleStoreDto dto) {
         DoctorShedule doctorShedule = findByIdWithException(id);
 
         Doctor doctor = doctorService.findById(dto.getDoctorId());

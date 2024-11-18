@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleParams;
 import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleResponse;
-import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoredto;
+import com.kevin.gestionhistoriaclinica.models.dto.shedule.DoctorSheduleStoreDto;
 import com.kevin.gestionhistoriaclinica.models.entities.shedule.DoctorShedule;
 import com.kevin.gestionhistoriaclinica.services.shedule.IDoctorSheduleService;
 
@@ -34,12 +34,12 @@ public class DoctorSheduleGraphqlController {
     }
 
     @MutationMapping
-    public DoctorShedule createDoctorShedule(@Argument DoctorSheduleStoredto input) {
+    public DoctorShedule createDoctorShedule(@Argument DoctorSheduleStoreDto input) {
         return doctorSheduleService.save(input);
     }
 
     @MutationMapping
-    public DoctorShedule updateDoctorShedule(@Argument Long id, @Argument DoctorSheduleStoredto input) {
+    public DoctorShedule updateDoctorShedule(@Argument Long id, @Argument DoctorSheduleStoreDto input) {
         return doctorSheduleService.update(id, input);
     }
 
